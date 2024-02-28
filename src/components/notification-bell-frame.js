@@ -51,7 +51,7 @@ const NotificationBellFrame = () => {
       </div>
       <div className="flex flex-col items-start justify-start pt-[11px] px-0 pb-0">
         <img
-          className="w-10 h-10 relative overflow-hidden shrink-0 z-[1]"
+          className="w-6 h-6 relative overflow-hidden shrink-0 z-[1]"
           loading="eager"
           alt=""
           src="/notification-bell1.svg"

@@ -23,7 +23,7 @@ const Login1 = () => {
     try {
       
       // Call the API
-      const response = await fetch('http://13.201.135.248:8000/api/forget-password/', {
+      const response = await fetch('http://zumba.ramo.co.in/api/forget-password/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

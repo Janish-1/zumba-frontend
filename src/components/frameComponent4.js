@@ -2,9 +2,9 @@ const FrameComponent4 = ({blog}) => {
     return (
       <div className="self-stretch flex flex-row items-start justify-start py-0 pr-0 pl-3 text-left text-3xs text-white font-poppins">
         <div className="flex-1 flex flex-col items-center justify-start gap-[33px_0px]">
-          <div className="w-[322px] flex flex-row items-start justify-start py-0 pr-11 pl-5 box-border">
+          <div className="w-full flex flex-row items-start justify-start py-0 pr-11 pl-5 box-border">
             <div className="flex-1 rounded-mini bg-gray-600  flex flex-row items-center justify-between py-[13px] pr-[15px] pl-4 border-[0.5px] border-solid border-yellowgreen">
-              <div className="h-16 w-[258px] relative rounded-mini bg-gray-600  box-border hidden border-[0.5px] border-solid border-yellowgreen" />
+              <div className="h-16 w-full relative rounded-mini bg-gray-600  box-border hidden border-[0.5px] border-solid border-yellowgreen" />
               <div className="flex flex-row items-end justify-start gap-[0px_8px]">
                 <div className="h-8 w-8 relative rounded-8xs bg-firebrick z-[1]">
                   <div className="absolute top-[0px] left-[0px] rounded-8xs bg-firebrick w-8 h-8 hidden" />
@@ -18,7 +18,7 @@ const FrameComponent4 = ({blog}) => {
                 <div className="flex flex-col items-start justify-start gap-[7px_0px]">
                   <div className="relative leading-[10px] z-[1]">Time</div>
                   <div className="relative text-xs leading-[12px] font-medium text-firebrick z-[1]">
-                    {blog.time_duration}
+                    {blog?.time_duration}
                   </div>
                 </div>
               </div>
@@ -36,7 +36,7 @@ const FrameComponent4 = ({blog}) => {
                 <div className="flex flex-col items-start justify-start gap-[7px_0px]">
                   <div className="relative leading-[10px] z-[1]">Burn</div>
                   <div className="relative text-xs leading-[12px] font-medium text-firebrick z-[1]">
-                    {blog.calories_burn} kcal
+                    {blog?.calories_burn} kcal
                   </div>
                 </div>
               </div>

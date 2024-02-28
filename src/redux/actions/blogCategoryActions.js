@@ -2,8 +2,10 @@
 import { FETCH_BLOG_CATEGORIES_FAILURE,FETCH_BLOG_CATEGORIES_REQUEST,FETCH_BLOG_CATEGORIES_SUCCESS } from "../constant/ActionTypes";
 import { FETCH_BLOG_FAILURE,FETCH_BLOG_REQUEST,FETCH_BLOG_SUCCESS } from "../constant/ActionTypes";
 import { FETCH_ALL_BLOG_REQUEST,FETCH_ALL_BLOG_SUCCESS,FETCH_ALL_BLOG_FAILURE } from "../constant/ActionTypes";
+const BASE_URL=process.env.REACT_APP_BASE_URL;
+console.log("baseurl",BASE_URL);
 // Mock API call
-const apiUrl = "http://13.201.135.248:8000/api/Catogory/";
+const apiUrl = "http://zumba.ramo.co.in/api/Catogory/";
 
 const fetchBlogCategoriesFromAPI = async () => {
   try {
@@ -32,9 +34,9 @@ export const fetchBlogCategories = () => {
 
 // Mock API call base URL
 
-const baseUrl = "http://13.201.135.248:8000/api/Catogory/";
+const baseUrl = "http://zumba.ramo.co.in/api/Catogory/";
 
-const BaseUrl = "http://13.201.135.248:8000/api/Blog-Catogory";
+const BaseUrl = "http://zumba.ramo.co.in/api/Blog-Catogory";
 // Function to fetch a single blog category by ID from the API
 const fetchBlogCategoryByIdFromAPI = async (id) => {
   try {
@@ -60,7 +62,7 @@ export const fetchBlogCategoryById = (id) => {
   };
 };
 
-const baseUrl1="http://13.201.135.248:8000/api/blog-list/";
+const baseUrl1="http://zumba.ramo.co.in/api/blog-list/";
 const fetchAllBlogFromAPI = async () => {
   try {
     const response = await fetch(baseUrl1);

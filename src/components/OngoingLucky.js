@@ -2,7 +2,7 @@ import React from 'react';
 
 const OngoingLucky = ({ state }) => {
     const { ongoingLuckyDraws, loading } = state;
-    const base = "http://13.201.135.248:8000";
+    const base = "http://zumba.ramo.co.in";
     console.log("ongoing events ", ongoingLuckyDraws);
 
     return (
@@ -17,7 +17,7 @@ const OngoingLucky = ({ state }) => {
                     return (
                         <div key={index} className="w-full max-w-sm bg-darkslategray-200 border border-gray-200 rounded-lg shadow dark:border-gray-700 text-white">
                             <div className="px-5 pb-[10px]">
-                                <h5 className="text-xl font-semibold tracking-tight text-white dark:text-white">{draw.name}</h5>
+                                <h5 className="text-xl font-semibold tracking-tight text-white dark:text-white">{draw.name.toUpperCase()}</h5>
                                 <img className="rounded-t-lg object-cover w-full" src={`${base}${draw.poster}`} alt="lucky draw image" />
                                 <div className="mt-3">
                                     <p className="text-lg text-white dark:text-white">Start Date: {draw.lucky_draw_startdate}</p>

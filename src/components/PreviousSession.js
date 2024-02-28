@@ -4,7 +4,7 @@ import LiveSessionFrameWithGraph from './live-session-frame-with-graph';
 
 const PreviousSession = ({ state }) => {
     const { previousSessions, loading } = state;
-    const base_url="http://13.201.135.248:8000"
+    const base_url="http://zumba.ramo.co.in"
 
     const handleWatchSession = (videoLink) => {
         window.location.href = videoLink; // Redirect to the video link

@@ -1,7 +1,7 @@
 // actions/luckyDrawActions.js
 import { FETCH_LUCKY_DRAWS_FAILURE,FETCH_LUCKY_DRAWS_REQUEST,FETCH_LUCKY_DRAWS_SUCCESS } from "../constant/ActionTypes";
 // Mock API call
-const apiUrl = "http://13.201.135.248:8000/api/draw_dashboard-data/";
+const apiUrl = "http://zumba.ramo.co.in/api/draw_dashboard-data/";
 
 const fetchLuckyDrawsFromAPI = async () => {
     // Perform your API call here

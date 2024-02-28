@@ -30,8 +30,8 @@ console.log("all blogs",blogs)
   }, [blogs, searchQuery]);
 
   return (
-    <div className="h-[100vh]  bg-gray-200">
-      <div className="w-full   relative bg-gray-200 overflow-hidden flex flex-col items-center justify-start pt-[30px] px-0 pb-3 box-border gap-[16px] text-left text-sm text-white font-lato">
+    <div className="bg-gray-200">
+      <div className="w-full   relative bg-gray-200 overflow-hidden flex flex-col items-center justify-start pt-[30px] px-0 pb-[80px] box-border gap-[16px] text-left text-sm text-white font-lato">
         <div className="self-stretch flex flex-row items-start justify-start pt-0 px-5 pb-[7px]">
           <div className="flex flex-col items-start justify-start gap-[3px]">
             <div className="relative font-semibold">Good Morning 🔥</div>

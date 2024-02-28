@@ -43,7 +43,7 @@ const Login1 = () => {
   const handleNewPassword = async () => {
     try {
       const new_password=newPassword;      
-      const response = await fetch('http://13.201.135.248:8000/api/new-password-set/', {
+      const response = await fetch('http://zumba.ramo.co.in/api/new-password-set/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

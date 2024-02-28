@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 
 const FrameComponent = ({ state }) => {
-  const baseUrl = 'http://13.201.135.248:8000';
+  const baseUrl = 'http://zumba.ramo.co.in';
   const navigate = useNavigate();
   const { categories, loading } = state;
 

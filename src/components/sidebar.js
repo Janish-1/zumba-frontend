@@ -1,6 +1,8 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 const Sidebar = ({ onClose }) => {
+    const navigate = useNavigate();
     return (
         <div>
             <div className="w-[403px] flex flex-row items-start justify-end py-0 pr-5 pl-0 box-border text-base text-firebrick">
@@ -49,7 +51,10 @@ const Sidebar = ({ onClose }) => {
                                                     alt=""
                                                     src="/pen.svg"
                                                 />
-                                                <div className="relative z-[6]">Edit Profile</div>
+                                                <div className="relative z-[6]"
+                                                    onClick={() => navigate('/edit')}
+                                                >Edit Profile</div>
+
                                             </div>
                                             <div className="flex flex-row items-start justify-start pt-0 px-0 pb-1 gap-[18px]">
                                                 <img
@@ -185,7 +190,7 @@ const Sidebar = ({ onClose }) => {
                                 </div>
                             </div>
                         </div> */}
-                            <div className="w-[310px] h-px relative box-border z-[6] border-t-[1px] border-solid border-silver" />
+                        <div className="w-[310px] h-px relative box-border z-[6] border-t-[1px] border-solid border-silver" />
                         <div className="self-stretch flex flex-row items-start justify-start py-0 px-3.5">
                             <div className="flex flex-row items-start justify-start gap-[18px]">
                                 <img

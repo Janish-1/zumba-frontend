@@ -1,7 +1,7 @@
 const PlayCircleIcon = () => {
   return (
     <img
-      className="h-16 w-16 relative overflow-hidden shrink-0 z-[1]"
+      className="h-12 w-12 relative overflow-hidden shrink-0 z-[1]"
       loading="eager"
       alt=""
       src="/playcircle.svg"

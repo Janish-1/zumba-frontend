@@ -32,17 +32,17 @@ const FrameRoot = () => {
           Live Session
         </h2>
         <img
-          className="h-[56.1px] w-[54px] relative object-cover"
+          className="h-[56.1px] rounded-full w-[54px] relative object-cover"
           loading="eager"
           alt=""
-          src="/profile@2x.png"
+          src="/male-avatar.jpg"
         />
       </header>
-      <div className="w-[100%] flex flex-row items-start justify-start pt-0 px-5 pb-[17px] box-border">
-        <div className="flex-1 rounded-4xs bg-darkslategray-200 flex flex-row items-center justify-between pt-1 pb-[5px]  pl-3.5">
-          <div className={`rounded-4xs flex flex-row items-center justify-center pt-1 pb-[3px] pr-[31px] pl-[26px] z-[1]  ${activeTab === 'previous' ? 'bg-firebrick ' : ''}`} onClick={() => setActiveTab('previous')}>Previous</div>
-          <div className={`rounded-4xs  flex flex-row items-center justify-center pt-1 pb-[3px] pr-[31px] pl-[26px] z-[1]  ${activeTab === 'live' ? 'bg-firebrick' : ''}`} onClick={() => setActiveTab('live')}>Live</div>
-          <div className={`rounded-4xs flex flex-row items-center justify-center pt-1 pb-[3px] pr-[31px] pl-[26px] z-[1] ${activeTab === 'upcoming' ? ' bg-firebrick ' : ''}`} onClick={() => setActiveTab('upcoming')}>Upcoming</div>
+      <div className="w-[100%] flex flex-row items-start justify-start pt-0  pb-[17px] box-border">
+        <div className="flex-1 w-full bg-darkslategray-200 flex flex-row items-center justify-center pt-1 pb-[5px]">
+          <div className={`w-full py-2 px-3 flex flex-row items-center justify-center  z-[1]  ${activeTab === 'previous' ? 'bg-firebrick ' : ''}`} onClick={() => setActiveTab('previous')}>Previous</div>
+          <div className={`w-full py-2 px-3  flex flex-row items-center justify-center  z-[1]  ${activeTab === 'live' ? 'bg-firebrick' : ''}`} onClick={() => setActiveTab('live')}>Live</div>
+          <div className={`w-full py-2 px-3 flex flex-row items-center justify-center z-[1] ${activeTab === 'upcoming' ? ' bg-firebrick ' : ''}`} onClick={() => setActiveTab('upcoming')}>Upcoming</div>
         </div>
       </div>
       {/* Render components based on active tab */}

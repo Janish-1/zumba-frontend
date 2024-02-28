@@ -3,14 +3,14 @@ import { useState } from 'react';
 import FrameComponent4 from "../components/frameComponent4";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import YouTube from '@u-wave/react-youtube';
 
 const Workout = () => {
   const { id } = useParams();
   const blogs = useSelector((state) => state.category.blogs);
   const allBlogs=useSelector((state)=>state.category.allBlogs);
-  const base = "http://13.201.135.248:8000";
+  const base = "http://zumba.ramo.co.in";
   // const [showPlayer, setShowPlayer] = useState(false); // State to toggle showing the player
   const [player, setPlayer] = useState(null); // State to hold the YouTube player
   const [playTime, setPlayTime] = useState(0); // State to hold the play time
@@ -68,13 +68,16 @@ const pauseWorkout = () => {
       <div className="w-full relative bg-gray-300 overflow-hidden flex flex-col items-end justify-start pt-10 px-0 pb-16 box-border gap-16">
         <header className="self-stretch flex flex-row items-start justify-start py-0 px-5 text-left text-base text-white font-poppins">
           <div className="w-32 flex flex-row items-start justify-between">
-            <img
+          <Link to='/allworkouts'>
+          <img
               className="h-6 w-6 relative overflow-hidden shrink-0 min-h-6"
               loading="eager"
               alt=""
               src="/back.svg"
             />
-            <div className="relative leading-6 font-medium">Workout</div>
+          </Link>
+            
+            <div className="relative leading-6 text-firebrick text-xl font-medium">Workout</div>
           </div>
         </header>
         <section className="w-full md:w-96 flex flex-col items-center justify-start pt-0 pb-16 px-3 box-border gap-4">
@@ -123,10 +126,10 @@ const pauseWorkout = () => {
 
 // Function to extract the YouTube video ID from the link
 const getYouTubeVideoId = (link) => {
-  const videoId = link.split('v=')[1];
-  const ampersandPosition = videoId.indexOf('&');
+  const videoId = link?.split('v=')[1];
+  const ampersandPosition = videoId?.indexOf('&');
   if (ampersandPosition !== -1) {
-    return videoId.substring(0, ampersandPosition);
+    return videoId?.substring(0, ampersandPosition);
   }
   return videoId;
 };

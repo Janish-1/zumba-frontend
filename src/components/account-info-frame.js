@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const AccountInfoFrame = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const BASE_URL='http://13.201.135.248:8000/api/register/'
+  const BASE_URL='http://zumba.ramo.co.in/api/register/'
 
   const togglePasswordVisibility = () => {
     setShowPassword(prev => !prev);
@@ -48,8 +48,8 @@ const AccountInfoFrame = () => {
         // Successful signup, navigate to login page or any other route
         Swal.fire({
           icon: 'success',
-          title: 'success',
-          text: response.data.message
+          title: 'SUCCESS',
+          text: "You have Successfully Registered, Please Login to have Healthy Life"
         });
         navigate("/log-in-page");
       } else {
@@ -163,14 +163,13 @@ const AccountInfoFrame = () => {
         </div>
         <ErrorMessage name="confirmPassword" component="div" className="text-red-500 px-5 pb-2 font-roboto text-sm" />
 
-        <div className="flex flex-col items-center justify-start gap-[21px]">
-          <div className="flex flex-row items-start justify-start py-0 pr-[7px] pl-0">
+        <div className="w-full flex flex-col items-center justify-start gap-[21px]">
+          <div className="w-full flex flex-row items-start justify-start ">
             <button
               type="submit"
-              className="cursor-pointer [border:none] pt-[7px] pb-[9px] pr-[5px] pl-[17px] bg-firebrick h-[47px] rounded-mini flex flex-row items-center justify-end box-border z-[2]"
+              className=" w-full cursor-pointer text-center [border:none] bg-firebrick py-1 rounded-mini flex flex-row items-center justify-center box-border z-[2]"
             >
-              <div className="h-[47px] w-[161px] relative rounded-mini bg-firebrick hidden" />
-              <b className="self-stretch relative text-11xl font-arvo text-white text-left z-[1]">
+              <b className=" text-11xl font-arvo text-white  z-[1]">
                 SIGN UP
               </b>
             </button>

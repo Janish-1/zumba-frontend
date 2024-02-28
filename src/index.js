@@ -6,16 +6,17 @@ import { BrowserRouter } from "react-router-dom";
 import "./global.css";
 import store from "./redux/store/Store";
 import { Provider } from "react-redux";
-
+import { ContextProvider } from "./context/ContextProvider";
 const container = document.getElementById("root");
 const root = createRoot(container);
 
 root.render(
   <BrowserRouter>
-    <Provider store={store}>
+  <ContextProvider>
+  <Provider store={store}>
       <App />
     </Provider>
-
+  </ContextProvider>
   </BrowserRouter>
 );
 

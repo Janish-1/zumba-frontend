@@ -1,7 +1,7 @@
 // actions/livesessionActions.js
 import { FETCH_LIVE_SESSIONS_FAILURE,FETCH_LIVE_SESSIONS_SUCCESS,FETCH_LIVE_SESSIONS_REQUEST } from "../constant/ActionTypes";
   // Mock API call
-  const apiUrl="http://13.201.135.248:8000/api/live_session_management/";
+  const apiUrl="http://zumba.ramo.co.in/api/live_session_management/";
   const fetchLiveSessionsFromAPI = async () => {
     // Perform your API call here
     try {

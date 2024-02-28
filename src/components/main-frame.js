@@ -9,7 +9,7 @@ const MainFrame = () => {
   const [logged, setLogged] = useState(false);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const BASE_URL = 'http://13.201.135.248:8000/api/login/'
+  const BASE_URL = 'http://zumba.ramo.co.in/api/login/'
 
   const togglePasswordVisibility = () => {
     setShowPassword(prev => !prev);
@@ -63,7 +63,7 @@ const MainFrame = () => {
       const id = localStorage.getItem('userId'); // Retrieve user ID from localStorage
       console.log("user id and otp",id,otp)
       const response = await axios.post(
-        'http://13.201.135.248:8000/api/otpverify/',
+        'http://zumba.ramo.co.in/api/otpverify/',
         { otp, id },
         {
           headers: {
@@ -77,7 +77,7 @@ const MainFrame = () => {
       if (response.status === 200) {
         // If OTP verification is successful, set logged state to true
         console.log('verified')
-        navigate("/home");
+        navigate("/");
         setLogged(true);
       } else {
         // Handle error response
@@ -181,20 +181,19 @@ const MainFrame = () => {
                 </div>
               </div>
               {logged ? (<button
-                className="cursor-pointer [border:none] pt-[11px] pb-2 pr-2.5 pl-[26px] bg-firebrick self-stretch rounded-mini shadow-[0px_4px_4px_rgba(255,_218,_218,_0.25)] flex flex-row items-center justify-end z-[2]"
+                className="cursor-pointer [border:none] py-1 bg-firebrick self-stretch rounded-mini shadow-[0px_4px_4px_rgba(255,_218,_218,_0.25)] flex flex-row items-center justify-end z-[2]"
                 onClick={handleVerifyOTP}
                 type="button"
               >
-                <div className="h-14 w-[175px] relative rounded-mini bg-firebrick hidden" />
-                <b className="h-[37px] flex-1 relative text-11xl inline-block font-arvo text-white text-left z-[1]">
+                <b className=" flex-1 relative text-11xl inline-block font-arvo text-white  z-[1]">
                   Verify
                 </b>
               </button>) : (<button
-                className="cursor-pointer [border:none] pt-[11px] pb-2 pr-2.5 pl-[26px] bg-firebrick self-stretch rounded-mini shadow-[0px_4px_4px_rgba(255,_218,_218,_0.25)] flex flex-row items-center justify-end z-[2]"
+                className="cursor-pointer [border:none] py-1 bg-firebrick self-stretch rounded-mini shadow-[0px_4px_4px_rgba(255,_218,_218,_0.25)] flex flex-row items-center justify-end z-[2]"
                 type="submit"
               >
                 <div className="h-14 w-full relative rounded-mini bg-firebrick hidden" />
-                <b className=" flex-1 relative text-11xl inline-block font-arvo text-white text-left z-[1]">
+                <b className=" flex-1 relative text-11xl inline-block font-arvo text-white  z-[1]">
                   Sign In
                 </b>
               </button>)}
