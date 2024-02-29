@@ -3,7 +3,7 @@ import LiveSessionFrameWithGraph from './live-session-frame-with-graph';
 
 const LiveSession = ({ state }) => {
     const { liveSessions, loading } = state;
-    const base_url = "http://zumba.ramo.co.in";
+    const base_url = "https://zumba.ramo.co.in";
 
     const handleWatchSession = (videoLink) => {
         window.location.href = videoLink; // Redirect to the video link

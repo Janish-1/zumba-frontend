@@ -2,7 +2,7 @@ import React from 'react';
 
 const OngoingLucky = ({ state }) => {
     const { ongoingLuckyDraws, loading } = state;
-    const base = "http://zumba.ramo.co.in";
+    const base = "https://zumbafront.ramo.co.in";
     console.log("ongoing events ", ongoingLuckyDraws);
 
     return (

@@ -4,7 +4,7 @@ import LiveSessionFrameWithGraph from './live-session-frame-with-graph';
 
 const Upcoming = ({ state }) => {
     const { upcomingSessions, loading } = state;
-    const base_url="http://zumba.ramo.co.in"
+    const base_url="https://zumbafront.ramo.co.in"
 
 console.log("upcomming",upcomingSessions)
     // Mock start and end time (replace with actual values)

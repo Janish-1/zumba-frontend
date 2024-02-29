@@ -9,7 +9,7 @@ const MainFrame = () => {
   const [logged, setLogged] = useState(false);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const BASE_URL = 'http://zumba.ramo.co.in/api/login/'
+  const BASE_URL = 'https://zumba.ramo.co.in/api/login/'
 
   const togglePasswordVisibility = () => {
     setShowPassword(prev => !prev);
@@ -20,7 +20,7 @@ const MainFrame = () => {
     password: '',
   };
   const [otp, setOtp] = useState('');
-  
+
   const validationSchema = Yup.object({
     email: Yup.string().email('Invalid email address').required('Email is required'),
     password: Yup.string().required('Password is required').min(6, 'Password must be at least 6 characters'),
@@ -37,6 +37,10 @@ const MainFrame = () => {
       });
       if (response.status === 200) {
         localStorage.setItem('userId', response.data.user_id);
+        // Retrieve OTP from the response and set it in the state
+        const otpFromResponse = response.data.otp;
+        setOtp(otpFromResponse);
+        
         setLogged(true);
       } else {
         Swal.fire({
@@ -46,12 +50,12 @@ const MainFrame = () => {
         });
       }
     } catch (error) {
-        // Log the error message
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: error.response.data.error
-    });
+      // Log the error message
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.response.data.error
+      });
       // console.log("error",error.response.data.error);
       console.error('Error:', error.message);
     }
@@ -61,9 +65,9 @@ const MainFrame = () => {
   const handleVerifyOTP = async () => {
     try {
       const id = localStorage.getItem('userId'); // Retrieve user ID from localStorage
-      console.log("user id and otp",id,otp)
+      console.log("user id and otp", id, otp)
       const response = await axios.post(
-        'http://zumba.ramo.co.in/api/otpverify/',
+        'https://zumba.ramo.co.in/api/otpverify/',
         { otp, id },
         {
           headers: {

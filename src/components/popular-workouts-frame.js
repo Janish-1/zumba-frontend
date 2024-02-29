@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const PopularWorkoutsFrame = ({ blogs }) => {
   console.log("blogs",blogs);
   const navigate = useNavigate();
-  const base = "http://zumba.ramo.co.in"
+  const base = "https://zumba.ramo.co.in"
   const onWorkout1ContainerClick = useCallback((id) => {
     navigate(`/workout/${id}`);
   }, [navigate]);

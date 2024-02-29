@@ -2,7 +2,7 @@ import React from 'react';
 
 const Completedluckydraw = ({ state }) => {
     const { completedLuckyDraws, loading } = state;
-    const base = "http://zumba.ramo.co.in";
+    const base = "https://zumbafront.ramo.co.in";
 
     // Function to capitalize the winner's name
     const capitalizeWinnerName = (name) => {

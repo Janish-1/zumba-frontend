@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const AccountInfoFrame = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const BASE_URL='http://zumba.ramo.co.in/api/register/'
+  const BASE_URL='https://zumba.ramo.co.in/api/register/'
 
   const togglePasswordVisibility = () => {
     setShowPassword(prev => !prev);
