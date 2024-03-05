@@ -1,11 +1,12 @@
 // actions/livesessionActions.js
 import { FETCH_LIVE_SESSIONS_FAILURE,FETCH_LIVE_SESSIONS_SUCCESS,FETCH_LIVE_SESSIONS_REQUEST } from "../constant/ActionTypes";
   // Mock API call
-  const apiUrl="http://zumba.ramo.co.in/api/live_session_management/";
+  const BASE_URL=process.env.REACT_APP_API_URL;
+
   const fetchLiveSessionsFromAPI = async () => {
     // Perform your API call here
     try {
-      const response = await fetch(`${apiUrl}`);
+      const response = await fetch(`${BASE_URL}/api/live_session_management/`);
       const data = await response.json();
       return data;
     } catch (error) {

@@ -3,30 +3,30 @@ import Sidebar from '../components/sidebar';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from '../redux/actions/userActions';
 const ProfileMain = () => {
-  const dispatch=useDispatch();
-  const user =useSelector((state)=>state.user.user);
-  console.log("user in profile",user);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
+  console.log("user in profile", user);
 
-  const navigate =useNavigate();
+  const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State to manage sidebar visibility
 
   // Function to toggle sidebar state
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  const handleLogout=()=>{
+  const handleLogout = () => {
     localStorage.removeItem("userId");
     navigate('/log-in-page');
   }
-  useEffect(()=>{
-    const id =localStorage.getItem("userId");
+  useEffect(() => {
+    const id = localStorage.getItem("userId");
     dispatch(fetchUser(id))
-  },[dispatch])
+  }, [dispatch])
   return (
-    <div className='w-full h-screen bg-gray-200'>
+    <div className='w-full h-screen pb-[6.25rem] bg-gray-200'>
       <div
         class="max-w-2xl  sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto   bg-gray-200 shadow-xl rounded-lg text-white">
         <div class="rounded-t-lg h-32 w-full overflow-hidden">
@@ -36,7 +36,7 @@ const ProfileMain = () => {
           <img class="object-cover object-center h-32" src='/male-avatar.jpg' alt='Woman looking front' />
         </div>
         <div class="text-center mt-2">
-          <h2 className="font-semibold" style={{ color: '#B10000' }}>Sarah Smith</h2>
+          <h2 className="font-semibold" style={{ color: '#B10000' }}>{user?.username}</h2>
           <p class="text-gray-500" style={{ color: '#B10000' }}>{user?.email}</p>
         </div>
         {/* <div className="flex justify-center px-5">
@@ -55,8 +55,11 @@ const ProfileMain = () => {
           </div>
         </div> */}
 
-        <div class="p-4 border-t mx-8 mt-2">
-          <button class="w-1/2 block mx-auto rounded bg-gray-900 hover:shadow-lg font-semibold text-white px-4 py-2">Wallet {" "} ₹ 00</button>
+        <div class="p-[4px] border-t mx-8 mt-2">
+          <button class="w-1/2 block mx-auto rounded bg-gray-900 hover:shadow-lg font-semibold text-white px-4 py-2">Wallet {" "} ₹ {user?.wallet_balance}</button>
+        </div>
+        <div class="p-4 border-t mx-8">
+          <button class="w-1/2 block mx-auto rounded bg-gray-900 hover:shadow-lg font-semibold text-white px-4 py-2">{`Referral code ${user?.referral_code}`}</button>
         </div>
       </div>
 
@@ -88,7 +91,9 @@ const ProfileMain = () => {
                 alt=""
                 src="/settings.svg"
               />
-              <div className="relative z-[6]">Transactions</div>
+              <div className="relative z-[6]"
+                onClick={() => navigate('/transaction')}
+              >Transactions</div>
             </div>
             <div className="flex flex-row items-start justify-start gap-[16px]">
               <img
@@ -97,7 +102,9 @@ const ProfileMain = () => {
                 alt=""
                 src="/frame.svg"
               />
-              <div className="relative z-[6]">About Us</div>
+              <div className="relative z-[6]"
+              onClick={()=>navigate('/aboutus')}
+              >About Us</div>
             </div>
             <div className="flex flex-row items-center justify-start gap-[18px]">
               <img
@@ -106,7 +113,9 @@ const ProfileMain = () => {
                 alt=""
                 src="/privacy-tip.svg"
               />
-              <div className="relative z-[6]">Your Privacy</div>
+              <div className="relative z-[6]"
+              onClick={()=>navigate('/privacy')}
+              >Your Privacy</div>
             </div>
             <div className="flex flex-row items-start justify-start gap-[18px]">
               <img
@@ -115,7 +124,9 @@ const ProfileMain = () => {
                 alt=""
                 src="/search.svg"
               />
-              <div className="relative z-[6]">Contact Us</div>
+              <div className="relative z-[6]"
+              onClick={()=>navigate('/contactus')}
+              >Contact Us</div>
             </div>
             <div className="flex flex-row items-start justify-start gap-[18px]">
               <img
@@ -163,7 +174,7 @@ const ProfileMain = () => {
           </div>
         </div>
       </div>
-     
+
       <Footer />
     </div>
   )

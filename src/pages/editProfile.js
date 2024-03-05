@@ -1,105 +1,105 @@
 
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from '../redux/actions/userActions';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 const EditProfile = () => {
-    const navigate=useNavigate();
-    const dispatch=useDispatch();
-    const user=useSelector((state)=>state.user.user);
-    console.log("userdetails in edit",user);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user.user);
+    console.log("userdetails in edit", user);
+    const BASE_URL=process.env.REACT_APP_API_URL;
     // Initialize state variables for form data and errors
     const [formData, setFormData] = useState({
         username: user?.username,
-        email:user?.email,
-        first_name: '',
-        last_name: '',
-        mobile_no: '',
-        address: '',
-        city: '',
-        gender: 'male', // Default value for gender
-        dob: ''
+        email: user?.email,
+        first_name: user?.first_name?user?.first_name:'',
+        last_name: user?.last_name?user?.last_name:'',
+        mobile_no:user?.mobile_no?user?.mobile_no:'',
+        address: user?.address?user?.address:'',
+        city: user?.city?user?.city:'',
+        gender:user?.gender?user?.gender:'male',
+        dob:user?.dob?user?.dob:'',
     });
-    console.log("formDate",formData)
+    console.log("formDate", formData)
     const [errors, setErrors] = useState({});
 
-    // Event handler for input changes
     const handleChange = (e) => {
         const { name, value } = e.target;
-
-        // Update the form data state
         setFormData({
             ...formData,
             [name]: value
         });
-
-        // Perform validation for specific fields if needed
-        // Update the errors state accordingly
+    
         let newErrors = { ...errors };
-
-        if (name === 'username' && value.trim() === '') {
-            newErrors = { ...newErrors, username: 'Username is required' };
-        } else {
-            delete newErrors.username;
+    
+        // Validate fields that are editable
+        if (name !== 'username' && name !== 'email') {
+            if (value.trim() === '') {
+                newErrors = { ...newErrors, [name]: `${name.charAt(0).toUpperCase() + name.slice(1)} is required` };
+            } else {
+                delete newErrors[name];
+            }
         }
-
-        // Perform validation for other fields as needed
-
+    
         setErrors(newErrors);
     };
-
-    
-// Event handler for form submission
-const handleSubmit = async (e) => {
-    e.preventDefault();
-    const id =localStorage.getItem("userId")
-
-    try {
-        const response = await axios.patch(
-            `http://zumba.ramo.co.in/api/edit-profile/${id}/`, // Your API endpoint
-            formData, // Send the formData object containing updated user details
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            }
-        );
-        if(response.status==200){
-            Swal.fire({
-                icon: 'success',
-                title: 'Edited successfully!',
-                showConfirmButton: false,
-                timer: 1500 // Adjust the duration as needed
-            });
-            dispatch(fetchUser(id));
-            navigate('/profile-main');
-        }
-
-        // Handle the response accordingly
-        console.log('User details updated:', response.data);
-    } catch (error) {
-        // Handle errors
-        Swal.fire({
-            icon: 'error',
-            title: 'Something Went Wrong!',
-            showConfirmButton: false,
-            timer: 1500 // Adjust the duration as needed
-        });
-        console.error('Error updating user details:', error);
-    }
-};
     useEffect(()=>{
-        const id =localStorage.getItem("userId");
+        const id=localStorage.getItem("userId");
         dispatch(fetchUser(id));
     },[dispatch])
+    // Event handler for form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const id = localStorage.getItem("userId")
+
+        try {
+            const response = await axios.patch(
+                `${BASE_URL}/api/edit-profile/${id}/`, // Your API endpoint
+                formData, // Send the formData object containing updated user details
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+            if (response.status == 200) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Edited successfully!',
+                    showConfirmButton: false,
+                    timer: 1500 // Adjust the duration as needed
+                });
+                dispatch(fetchUser(id));
+                navigate('/profile-main');
+            }
+
+            // Handle the response accordingly
+            console.log('User details updated:', response.data);
+        } catch (error) {
+            // Handle errors
+            Swal.fire({
+                icon: 'error',
+                title: 'Something Went Wrong!',
+                text:error.response.data.dob,
+                showConfirmButton: true,
+                // timer: 1500 // Adjust the duration as needed
+            });
+            console.error('Error updating user details:', error);
+        }
+    };
+    useEffect(() => {
+        const id = localStorage.getItem("userId");
+        dispatch(fetchUser(id));
+    }, [dispatch])
     return (
         <div className="flex justify-center"> {/* Flex container to center the content */}
             <div className="p-8 w-full rounded border border-gray-200">
                 <div className='flex flex-row items-center ' >
-                    <Link to={'/'}>
+                    <Link to={'/profile-main'}>
                         <img
                             className="h-[34px] object-contain"
                             loading="eager"
@@ -134,13 +134,13 @@ const handleSubmit = async (e) => {
                         </div>
                         <div className='w-full'>
                             <label htmlFor="address" className="text-sm text-white block mb-1 font-medium">Address</label>
-                            <input type="text" name="address" value={formData.address} onChange={handleChange} id="address" className="[border:none] [outline:none] bg-[transparent] h-5 border box-border font-roboto text-base  border-gray-200  bg-gray-100 rounded py-5 pl-2 px-1 block focus:ring-blue-500 focus:border-blue-500 text-gray-200 w-full" placeholder="Enter your last name" />
+                            <input type="text" name="address" value={formData.address} onChange={handleChange} id="address" className="[border:none] [outline:none] bg-[transparent] h-5 border box-border font-roboto text-base  border-gray-200  bg-gray-100 rounded py-5 pl-2 px-1 block focus:ring-blue-500 focus:border-blue-500 text-gray-200 w-full" placeholder="Address" />
                             {errors.address && <div className="text-red-500">{errors.address}</div>}
 
                         </div>
                         <div className='w-full'>
                             <label htmlFor="city" className="text-sm text-white block mb-1 font-medium">City</label>
-                            <input type="text" name="city" value={formData.city} onChange={handleChange} id="city" className="[border:none] [outline:none] bg-[transparent] h-5 border box-border font-roboto text-base  border-gray-200  bg-gray-100 rounded py-5 pl-2 px-1 block focus:ring-blue-500 focus:border-blue-500 text-gray-200 w-full" placeholder="Enter your last name" />
+                            <input type="text" name="city" value={formData.city} onChange={handleChange} id="city" className="[border:none] [outline:none] bg-[transparent] h-5 border box-border font-roboto text-base  border-gray-200  bg-gray-100 rounded py-5 pl-2 px-1 block focus:ring-blue-500 focus:border-blue-500 text-gray-200 w-full" placeholder="City" />
                             {errors.city && <div className="text-red-500">{errors.city}</div>}
 
                         </div>
@@ -178,10 +178,22 @@ const handleSubmit = async (e) => {
                         </div>
                     </div>
 
-                    <div className="space-x-4 mt-8">
-                        <button type="submit" className="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-600 active:bg-red-700 disabled:opacity-50">Save</button>
-                        <button type='button' onClick={()=>navigate('/profile-main')} className="py-2 px-4 bg-white border border-gray-200  text-gray-200 rounded hover:bg-red-100 active:bg-red-200 disabled:opacity-50">Cancel</button>
+                    <div className="w-full flex justify-center space-x-4 mt-8">
+                        <button
+                            type="submit"
+                            className="w-[calc(50%-8px)] py-2 bg-red-500 text-white rounded hover:bg-red-600 active:bg-red-700 disabled:opacity-50"
+                        >
+                            Save
+                        </button>
+                        <button
+                            type='button'
+                            onClick={() => navigate('/profile-main')}
+                            className="w-[calc(50%-8px)] py-2 bg-white border border-gray-200 text-gray-200 rounded hover:bg-red-100 active:bg-red-200 disabled:opacity-50"
+                        >
+                            Cancel
+                        </button>
                     </div>
+
                 </form>
             </div>
         </div>

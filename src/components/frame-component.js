@@ -2,7 +2,8 @@ import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 
 const FrameComponent = ({ state }) => {
-  const baseUrl = 'https://zumbafront.ramo.co.in';
+  const BASE_URL=process.env.REACT_APP_API_URL;
+
   const navigate = useNavigate();
   const { categories, loading } = state;
 
@@ -20,7 +21,7 @@ const FrameComponent = ({ state }) => {
                 className="w-[12rem] h-[12rem] object-cover rounded-md cursor-pointer"
                 loading="lazy"
                 alt=""
-                src={`${baseUrl}${category.category_image}`}
+                src={`${BASE_URL}${category.category_image}`}
                 onClick={() => handleImageClick(category.id)}
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-md">

@@ -11,6 +11,7 @@ const Login1 = () => {
     newPassword: '',
     confirmPassword: '',
   });
+  const BASE_URL=process.env.REACT_APP_API_URL;
 
 
   const handleOtpChange = (e) => {
@@ -43,7 +44,7 @@ const Login1 = () => {
   const handleNewPassword = async () => {
     try {
       const new_password=newPassword;      
-      const response = await fetch('https://zumba.ramo.co.in/api/new-password-set/', {
+      const response = await fetch(`${BASE_URL}/api/new-password-set/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

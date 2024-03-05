@@ -1,8 +1,8 @@
 import { FETCH_USER_FAILURE,FETCH_USER_REQUEST,FETCH_USER_SUCCESS } from "../constant/ActionTypes";
-const apiUrl = "http://zumba.ramo.co.in/api/users/";
+const BASE_URL=process.env.REACT_APP_API_URL;
 
 const fetchUserFromAPI = async (id) => {
-    const url = `${apiUrl}${id}/`; // Adjust URL to include userId parameter
+    const url = `${BASE_URL}/api/users/${id}/`; // Adjust URL to include userId parameter
     try {
         const response = await fetch(url);
         const data = await response.json();

@@ -2,7 +2,9 @@ import React from 'react';
 
 const Completedluckydraw = ({ state }) => {
     const { completedLuckyDraws, loading } = state;
-    const base = "https://zumbafront.ramo.co.in";
+    // const base = "https://zumba.ramo.co.in";
+    const BASE_URL=process.env.REACT_APP_API_URL;
+
 
     // Function to capitalize the winner's name
     const capitalizeWinnerName = (name) => {
@@ -11,7 +13,7 @@ const Completedluckydraw = ({ state }) => {
 
     // Function to format the prize amount as ₹5000/-
     const formatPrice = (price) => {
-        return `₹${price.split("-")[0]}-`;
+        return `₹${price.split("-")[0]}`;
     };
 
     return (
@@ -23,7 +25,7 @@ const Completedluckydraw = ({ state }) => {
                     <div key={index} className="w-full max-w-sm bg-darkslategray-200 border border-gray-200 rounded-lg shadow dark:border-gray-700 text-white">
                         <div className="px-5 pb-[10px]">
                             <h5 className="text-xl font-semibold tracking-tight text-white dark:text-white">{draw.name.toUpperCase()}</h5>
-                            <img className="rounded-lg  object-cover w-full" src={`${base}${draw.poster}`} alt="lucky draw image" />
+                            <img className="rounded-lg  object-cover w-full" src={`${BASE_URL}${draw.poster}`} alt="lucky draw image" />
                             <div className="mt-3">
                                 <p className="text-lg text-white  dark:text-white">Winner's</p>
                             </div>

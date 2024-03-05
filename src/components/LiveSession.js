@@ -1,26 +1,47 @@
 import React from 'react';
 import LiveSessionFrameWithGraph from './live-session-frame-with-graph';
-
+import axios from 'axios';
 const LiveSession = ({ state }) => {
     const { liveSessions, loading } = state;
-    const base_url = "https://zumba.ramo.co.in";
-
-    const handleWatchSession = (videoLink) => {
-        window.location.href = videoLink; // Redirect to the video link
-        console.log("running");
+    const BASE_URL = process.env.REACT_APP_API_URL;
+    // console.log("livesession ",liveSessions)
+    const handleWatchSession = async (videoLink, liveSessionId) => {
+        const user=localStorage.getItem("userId");
+    
+        try {
+            // Define the data to be sent in the request body
+            const requestData = {
+                user: user,
+                live_session: liveSessionId
+            };
+    
+            // Make the POST request using Axios
+            const response = await axios.post(`${BASE_URL}/api/attendence/`, requestData);
+            if(response.status==200){
+                console.log("successfully attend live session")
+            }
+            // Redirect to the video link
+            window.location.href = videoLink;
+        } catch (error) {
+            // Handle errors
+            console.error('Error occurred:', error);
+    
+            // Redirect to the video link even if an error occurs (optional)
+            window.location.href = videoLink;
+        }
     };
+
     // Get current time
     const currentTime = new Date();
-
-
 
     return (
         <div>
             {loading ? (
                 <div>Loading...</div>
+            ) : liveSessions.length === 0 ? (
+                <div style={{ color: 'red', textAlign: 'center' }}>No live sessions available.</div>
             ) : (
                 liveSessions.map((session, index) => {
-
                     // Convert start time to Date object
                     const startTimeArray = session.live_session_starttime.split(':');
                     const startTime = new Date();
@@ -57,7 +78,7 @@ const LiveSession = ({ state }) => {
                                         className="self-stretch relative rounded-xl max-w-full overflow-hidden max-h-full object-cover"
                                         loading="eager"
                                         alt=""
-                                        src={`${base_url}${session.poster}`}
+                                        src={`${BASE_URL}${session.poster}`}
                                     />
                                 </div>
                             </div>
@@ -67,17 +88,15 @@ const LiveSession = ({ state }) => {
                             </div>
                             <div>
                                 {
-                                    !isButtonDisabled?(
-                                        <LiveSessionFrameWithGraph content={'Watch Live'} handleNavigation={() => handleWatchSession(session.youtube_live_link)}/>
-
-                                    ):''
+                                    !isButtonDisabled ? (
+                                        <LiveSessionFrameWithGraph content={'Watch Live'} handleNavigation={() => handleWatchSession(session.youtube_live_link,session.id)} />
+                                    ) : ''
                                 }
                             </div>
                         </section>
                     );
                 })
             )}
-
         </div>
     )
 }

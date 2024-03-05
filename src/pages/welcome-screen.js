@@ -18,31 +18,32 @@ const WelcomeScreen = () => {
         {/* Second div: Main Content */}
         <div className="absolute inset-0 flex top-0 justify-center items-center overflow-x-hidden">
           <img
-            className="max-h-[60vh] top-[100px] max-w-full object-cover z-10 absolute"
+            className="max-h-[50vh] top-[94px] max-w-full object-cover z-10 absolute"
             alt=""
             src="/polygon-shape.svg"
           />
           <img
-            className="max-h-[60vh]  top-[100px] max-w-full z-20 absolute"
+            className="max-h-[50vh]  top-[94px] max-w-full z-20 absolute"
             alt=""
             src="/unsplashqkqwdvrqqy8@2x.png"
           />
           <img
-            className="max-h-[60vh]  top-[100px] max-w-full z-30 absolute"
+            className="max-h-[50vh]  top-[94px] max-w-full z-30 absolute"
             alt=""
             src="/unsplashqkqwdvrqqy8-1@2x.png"
           />
           <img
-            className="max-h-[60vh]  top-[100px] max-w-full z-40 absolute"
+            className="max-h-[50vh]  top-[94px] max-w-full z-40 absolute"
             alt=""
             src="/dumble-icons.svg"
           />
         </div>
 
       </div>
-      <div style={{ position: 'absolute', bottom: '0px', left: '0', right: '0', margin: 'auto' }}>
-        <BUTTONLOGIN />
-      </div>
+     <div style={{ position: 'absolute', bottom: '0px', left: '0', right: '0', margin: 'auto', zIndex: '999' }}>
+  <BUTTONLOGIN />
+</div>
+
 
 
     </>

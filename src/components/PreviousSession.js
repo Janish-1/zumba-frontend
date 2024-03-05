@@ -1,19 +1,20 @@
 import React from 'react';
-import GroupComponent from './group-component';
 import LiveSessionFrameWithGraph from './live-session-frame-with-graph';
 
 const PreviousSession = ({ state }) => {
     const { previousSessions, loading } = state;
-    const base_url="https://zumba.ramo.co.in"
+    const BASE_URL = process.env.REACT_APP_API_URL;
 
     const handleWatchSession = (videoLink) => {
         window.location.href = videoLink; // Redirect to the video link
     };
-console.log("previousSessions",previousSessions)
+
     return (
         <div>
             {loading ? (
                 <div>Loading...</div>
+            ) : previousSessions.length === 0 ? (
+                <div style={{ color: 'red', textAlign: 'center' }}>No previous sessions available.</div>
             ) : (
                 previousSessions.map((session, index) => (
                     <section key={index} style={{ marginBottom: '20px' }} className="self-stretch rounded-3xs bg-darkslategray-200 shadow-[0px_0px_4px_rgba(0,_0,_0,_0.25)] flex flex-col items-center justify-start pt-[19px] pb-[17px] pr-[37px] pl-9 box-border gap-[10px] max-w-full z-[1] text-left text-lg text-firebrick font-roboto">
@@ -41,13 +42,12 @@ console.log("previousSessions",previousSessions)
                                     className="self-stretch relative rounded-xl max-w-full overflow-hidden max-h-full object-cover"
                                     loading="eager"
                                     alt=""
-                                    src={`${base_url}${session.poster}`}
+                                    src={`${BASE_URL}${session.poster}`}
                                 />
                             </div>
                         </div>
                         {/* Time Display */}
                         <LiveSessionFrameWithGraph content={'Watch Here'} handleNavigation={() => handleWatchSession(session.youtube_live_link)} />
-
                     </section>
                 ))
             )}

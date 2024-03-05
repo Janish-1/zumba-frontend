@@ -44,13 +44,10 @@ const FrameComponent4 = ({blog}) => {
           </div>
           <div className="self-stretch flex flex-col items-start justify-start gap-[17px_0px] text-5xl font-lato">
             <h3 className="m-0 w-[241px] relative text-inherit font-extrabold font-inherit inline-block box-border pr-5">
-              Lower Body Training
+            {blog?.title}
             </h3>
             <div className="self-stretch relative text-mini leading-[22px]">
-              The lower abdomen and hips are the most difficult areas of the body
-              to reduce when we are on a diet. Even so, in this area, especially
-              the legs as a whole, you can reduce weight even if you don't use
-              tools.
+            {blog?.description}
             </div>
           </div>
         </div>

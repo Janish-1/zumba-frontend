@@ -12,7 +12,7 @@ const ContainerFrame = () => {
     dispatch(fetchUser(id))
   },[dispatch])
   return (
-    <section className="self-stretch flex flex-row items-start justify-start pt-2 pb-[22px] pr-[21px] pl-8 box-border max-w-full text-left text-lg text-gray-100 font-rubik">
+    <section className="self-stretch flex flex-row items-start justify-start pt-2 pb-[22px] pr-[21px] pl-2 box-border max-w-full text-left text-lg text-gray-100 font-rubik">
       <div className="flex-1 flex flex-col items-end justify-start gap-[24px] max-w-full">
         <div className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[27px] text-xl font-roboto">
           <div className="flex-1 flex flex-col items-start justify-start pt-1 px-0 pb-0 box-border min-w-[153px]">
@@ -38,7 +38,7 @@ const ContainerFrame = () => {
           <div className="flex flex-row items-center justify-start gap-[13px]">
           <Link to='/luckydraw'>
           <img
-              className="h-[30px] w-[30px] relative object-cover"
+              className="h-[35px] w-[35px] relative object-cover"
               loading="eager"
               alt=""
               src="/fortunewheel-1@2x.png"

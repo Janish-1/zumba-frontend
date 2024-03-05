@@ -2,14 +2,11 @@
 import { FETCH_BLOG_CATEGORIES_FAILURE,FETCH_BLOG_CATEGORIES_REQUEST,FETCH_BLOG_CATEGORIES_SUCCESS } from "../constant/ActionTypes";
 import { FETCH_BLOG_FAILURE,FETCH_BLOG_REQUEST,FETCH_BLOG_SUCCESS } from "../constant/ActionTypes";
 import { FETCH_ALL_BLOG_REQUEST,FETCH_ALL_BLOG_SUCCESS,FETCH_ALL_BLOG_FAILURE } from "../constant/ActionTypes";
-const BASE_URL=process.env.REACT_APP_BASE_URL;
-console.log("baseurl",BASE_URL);
-// Mock API call
-const apiUrl = "http://zumba.ramo.co.in/api/Catogory/";
+const BASE_URL=process.env.REACT_APP_API_URL;
 
 const fetchBlogCategoriesFromAPI = async () => {
   try {
-    const response = await fetch(apiUrl);
+    const response = await fetch(`${BASE_URL}/api/Catogory/`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -34,13 +31,11 @@ export const fetchBlogCategories = () => {
 
 // Mock API call base URL
 
-const baseUrl = "http://zumba.ramo.co.in/api/Catogory/";
 
-const BaseUrl = "http://zumba.ramo.co.in/api/Blog-Catogory";
 // Function to fetch a single blog category by ID from the API
 const fetchBlogCategoryByIdFromAPI = async (id) => {
   try {
-    const response = await fetch(`${BaseUrl}/${id}/`);
+    const response = await fetch(`${BASE_URL}/api/Blog-Catogory/${id}/`);
     const data = await response.json();
     return data.msg;
   } catch (error) {
@@ -62,10 +57,9 @@ export const fetchBlogCategoryById = (id) => {
   };
 };
 
-const baseUrl1="http://zumba.ramo.co.in/api/blog-list/";
 const fetchAllBlogFromAPI = async () => {
   try {
-    const response = await fetch(baseUrl1);
+    const response = await fetch(`${BASE_URL}/api/blog-list/`);
     const data = await response.json();
     return data;
   } catch (error) {

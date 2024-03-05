@@ -5,6 +5,7 @@ const Login1 = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+  const BASE_URL=process.env.REACT_APP_API_URL;
 
   const handleInputChange = (e) => {
     const inputEmail = e.target.value;
@@ -23,7 +24,7 @@ const Login1 = () => {
     try {
       
       // Call the API
-      const response = await fetch('https://zumba.ramo.co.in/api/forget-password/', {
+      const response = await fetch(`${BASE_URL}/api/forget-password/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

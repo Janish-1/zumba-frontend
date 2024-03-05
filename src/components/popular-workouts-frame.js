@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 const PopularWorkoutsFrame = ({ blogs }) => {
   console.log("blogs",blogs);
   const navigate = useNavigate();
-  const base = "https://zumba.ramo.co.in"
+  const BASE_URL=process.env.REACT_APP_API_URL;
+
   const onWorkout1ContainerClick = useCallback((id) => {
     navigate(`/workout/${id}`);
   }, [navigate]);
@@ -54,7 +55,7 @@ const PopularWorkoutsFrame = ({ blogs }) => {
                     <img
                       className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] max-w-full overflow-hidden max-h-full object-cover rounded-4xl"
                       alt=""
-                      src={`${base}/${blog.blog_photo}`}
+                      src={`${BASE_URL}/${blog.blog_photo}`}
                     />
                     <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] rounded-4xl [background:linear-gradient(91.78deg,_rgba(0,_0,_0,_0.51),_rgba(0,_0,_0,_0))] z-[1]" />
                   </div>

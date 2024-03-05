@@ -28,11 +28,14 @@ import AllWorkouts from "./pages/allWorkouts";
 import Sidebar from "./components/sidebar";
 import PrivateRoutes from "./pages/PrivateRoute";
 import EditProfile from "./pages/editProfile";
+import Transaction from "./pages/transaction";
+import Contactus from "./pages/contactus";
+import Aboutus from "./pages/aboutus";
+import Privacy from "./pages/privacy";
 function App() {
   const action = useNavigationType();
   const location = useLocation();
   const pathname = location.pathname;
-
   useEffect(() => {
     if (action !== "POP") {
       window.scrollTo(0, 0);
@@ -133,17 +136,17 @@ function App() {
       <Route path="/welcome-screen" element={<WelcomeScreen />} />
       <Route path="/sign-up-page" element={<SignUpPage />} />
       <Route path="/log-in-page" element={<LogInPage />} />
-      <Route element={<PrivateRoutes/>} >
-        <Route element={<HomePage/>} path='/' exact/>
-        <Route element={<ProfileMain/>} path='/profile-main' />
+      <Route path="/premium" element={<Premium />} />
+      <Route path="/forget-password" element={<ForgetPassword />} />
+      <Route path="/forget-password-1" element={<ForgetPassword1 />} />
+      <Route path="/forget-password-2" element={<ForgetPassword2 />} />
+      <Route element={<PrivateRoutes />} >
+        <Route element={<HomePage />} path='/' exact />
+        <Route element={<ProfileMain />} path='/profile-main' />
         <Route path="/profile-about" element={<ProfileAbout />} />
         <Route path="/live-session" element={<LIveSession />} />
         <Route path="/notification" element={<Notification1 />} />
         <Route path="/subscription" element={<Subscription />} />
-        <Route path="/premium" element={<Premium />} />
-        <Route path="/forget-password" element={<ForgetPassword />} />
-        <Route path="/forget-password-1" element={<ForgetPassword1 />} />
-        <Route path="/forget-password-2" element={<ForgetPassword2 />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/profile-main" element={<ProfileMain />} />
         <Route path="/workout/:id" element={<Workout />} />
@@ -154,6 +157,11 @@ function App() {
         <Route path="/allworkouts" element={<AllWorkouts />} />
         <Route path="/sidebar" element={<Sidebar />} />
         <Route path="/edit" element={<EditProfile />} />
+        <Route path="/transaction" element={<Transaction />} />
+        <Route path="/contactus" element={<Contactus />} />
+        <Route path="/aboutus" element={<Aboutus />} />
+        <Route path="/privacy" element={<Privacy />} />
+    
       </Route>
     </Routes>
   );
