@@ -37,8 +37,7 @@ const MainFrame = () => {
       console.log("values", values);
       const response = await axios.post(`${BASE_URL}/api/login/`, values, {
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json'        }
       });
       console.log("response at login",response)
       if (response.status === 200) {

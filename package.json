@@ -2,6 +2,7 @@
   "name": "zumba_ronik",
   "version": "0.1.0",
   "private": true,
+  "proxy":"http://zumba-backend.onrender.com",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
@@ -16,7 +17,10 @@
     "@types/react-dom": "^18.0.11",
     "@u-wave/react-youtube": "^0.7.4",
     "axios": "^1.6.7",
+    "cors": "^2.8.5",
+    "express": "^4.18.3",
     "formik": "^2.4.5",
+    "path": "^0.12.7",
     "razorpay": "^2.9.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
