@@ -33,14 +33,13 @@ const MainFrame = () => {
           'Content-Type': 'application/json'
         }
       });
-      if (response.data.status === 200) {
-        setOtpRequested(true);
-      } else {
+      if (response.status === 200) {
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Failed to request OTP'
+          icon: 'success',
+          title: 'Success...',
+          text: 'OTP Send Success'
         });
+        setOtpRequested(true);
       }
     } catch (error) {
       Swal.fire({
@@ -57,8 +56,8 @@ const MainFrame = () => {
   const handleVerifyOTP = async (values, { setSubmitting }) => {
     setLoading(true);
     try {
-      const response = await axios.post(`${BASE_URL}/api/verifyotp/`, { phoneNumber: values.phoneNumber, otp: values.otp });
-      if (response.data.status === 200) {
+      const response = await axios.post(`${BASE_URL}/api/otpverify/`, { phoneNumber: values.phoneNumber, otp: values.otp });
+      if (response.status === 200) {
         setLogged(true);
         navigate("/dashboard");
       } else {
