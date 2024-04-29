@@ -99,7 +99,6 @@ const Premium = () => {
 
       <main className="self-stretch flex flex-row items-start justify-start pt-0 pb-3 px-[25px]">
         <section className="flex-1 w-full rounded-16xl bg-darkslategray-200 flex flex-col items-start justify-start py-[30px] px-0 gap-[30px] text-center text-xl text-small-text font-poppins">
-          <FreeText free="Premium" notificationBell="₹100" />
           <PremiumFeaturesFrame />
           <div className="self-stretch flex flex-row items-start justify-start py-0 px-[30px] text-6xl text-gray-100">
             <div className="flex-1 rounded-sm bg-firebrick flex flex-row items-center justify-center z-[1]">

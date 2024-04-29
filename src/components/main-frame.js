@@ -11,6 +11,7 @@ const MainFrame = () => {
   const [otpRequested, setOtpRequested] = useState(false); // Manages the flow of OTP request
   const navigate = useNavigate();
   const BASE_URL = process.env.REACT_APP_API_URL;
+  const [planStatus,setPlanStatus]=useState(null);
 
   const initialValues = {
     phoneNumber: '',
@@ -34,6 +35,8 @@ const MainFrame = () => {
         }
       });
       if (response.status === 200) {
+        localStorage.setItem('userId', response.data.user_id);
+        setPlanStatus(response.data.status);
         Swal.fire({
           icon: 'success',
           title: 'Success...',
@@ -58,8 +61,12 @@ const MainFrame = () => {
     try {
       const response = await axios.post(`${BASE_URL}/api/otpverify/`, { phoneNumber: values.phoneNumber, otp: values.otp });
       if (response.status === 200) {
+        if(planStatus==="active"){
+          navigate("/");
+        }else{
+          navigate('/premium');
+        }
         setLogged(true);
-        navigate("/dashboard");
       } else {
         Swal.fire({
           icon: 'error',
