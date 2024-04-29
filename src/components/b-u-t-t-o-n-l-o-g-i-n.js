@@ -25,7 +25,7 @@ const BUTTONLOGIN = () => {
         <b className="h-[37px] w-[136px] relative text-11xl inline-block font-arvo text-white text-left shrink-0 z-[2]">
           SIGN IN
         </b>
-        <input className="m-0 h-[27px] w-6" type="checkbox" />
+        <input className="m-0 h-[27px] w-6" type="checkbox" style={{visibility:'hidden'}}/>
       </button>
       <div className="flex flex-row items-start justify-start py-0 pr-1.5 pl-0">
         <div className="flex flex-row items-end justify-start gap-[3.3px]">

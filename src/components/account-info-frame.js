@@ -15,28 +15,28 @@ const AccountInfoFrame = () => {
   };
 
   const initialValues = {
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    referral_code: ''
+    name: '',
+    fatherName: '',
+    address: '',
+    aadharNo: '',
+    photo: null
   };
-console.log("intial values ",initialValues)
-  const validationSchema = Yup.object({
-    username: Yup.string()
-      .required('Full name is required')
-      .matches(/^\S*$/, 'Username cannot contain spaces'), // This regex ensures no spaces are allowed
-    email: Yup.string()
-      .email('Invalid email address')
-      .required('Email is required'),
-    password: Yup.string()
-      .required('Password is required')
-      .min(6, 'Password must be at least 6 characters'),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
-      .required('Confirm Password is required')
-  });
   
+  console.log("intial values ",initialValues)
+  const validationSchema = Yup.object({
+    name: Yup.string()
+      .required('Name is required'),
+    fatherName: Yup.string()
+      .required('Father name is required'),
+    address: Yup.string()
+      .required('Address is required'),
+    aadharNo: Yup.string()
+      .matches(/^\d{12}$/, 'Aadhar number must be exactly 12 digits')
+      .required('Aadhar number is required'),
+    photo: Yup.mixed()
+      .required('A photo is required')
+  });
+    
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
@@ -94,13 +94,13 @@ console.log("intial values ",initialValues)
             />
             <Field
               className="w-full [border:none] [outline:none] font-roboto text-base bg-[transparent] h-[19px] relative text-gray-200 text-left inline-block z-[3]"
-              name="username"
-              placeholder="username"
+              name="name"
+              placeholder="Name"
               type="text"
             />
           </div>
         </div>
-        <ErrorMessage name="username" component="div" className="text-red-500 px-5 pb-2 font-roboto text-sm" />
+        <ErrorMessage name="name" component="div" className="text-red-500 px-5 pb-2 font-roboto text-sm" />
 
         <div className="self-stretch flex flex-row items-start justify-start pt-0 px-0 pb-[5px]">
           <div className="flex-1 rounded-mini bg-gray-100 flex flex-row items-center justify-start py-4 px-[13px] gap-[21px] z-[2]">
@@ -112,13 +112,13 @@ console.log("intial values ",initialValues)
             />
             <Field
               className="w-full [border:none] [outline:none] font-roboto text-base bg-[transparent] h-[19px] relative text-gray-200 text-left inline-block z-[3]"
-              name="email"
-              placeholder="Enter Email Address"
-              type="email"
+              name="fatherName"
+              placeholder="Enter Father's Name"
+              type="text"
             />
           </div>
         </div>
-        <ErrorMessage name="email" component="div" className="text-red-500 px-5 pb-2 font-roboto text-sm" />
+        <ErrorMessage name="fatherName" component="div" className="text-red-500 px-5 pb-2 font-roboto text-sm" />
 
         <div className="self-stretch flex flex-row items-start justify-start pt-0 px-0 pb-[5px]">
           <div className="flex-1 rounded-mini bg-gray-100 flex flex-row items-start justify-between pt-[15px] pb-[13px] pr-6 pl-[9px] z-[2]">
@@ -131,20 +131,14 @@ console.log("intial values ",initialValues)
               />
               <Field
                 className="w-full border-none outline-none font-roboto text-base bg-transparent h-19px flex-1 relative text-gray-200 text-left inline-block z-3"
-                name="password"
-                placeholder="Password"
-                type={showPassword ? "text" : "password"}
+                name="address"
+                placeholder="Enter Address"
+                type="text"
               />
             </div>
-            <img
-              className="h-6 w-6 relative overflow-hidden shrink-0 z-[3] cursor-pointer"
-              alt=""
-              src="/eyeslash.svg"
-              onClick={togglePasswordVisibility}
-            />
           </div>
         </div>
-        <ErrorMessage name="password" component="div" className="text-red-500 px-5 pb-2 font-roboto text-sm" />
+        <ErrorMessage name="address" component="div" className="text-red-500 px-5 pb-2 font-roboto text-sm" />
 
         <div className="self-stretch rounded-mini bg-gray-100 flex flex-row items-start justify-start pt-0 px-0 pb-[5px]">
           <div className="flex-1 rounded-mini bg-gray-100 flex flex-row items-start justify-between pt-[15px] pb-[13px] pr-6 pl-[9px] z-[2]">
@@ -157,14 +151,14 @@ console.log("intial values ",initialValues)
               />
               <Field
                 className="w-full border-none outline-none font-roboto text-base bg-transparent h-19px flex-1 relative text-gray-200 text-left inline-block z-3"
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                type="password"
+                name="aadharNo"
+                placeholder="Aadhar Number"
+                type="text"
               />
             </div>
           </div>
         </div>
-        <ErrorMessage name="confirmPassword" component="div" className="text-red-500 px-5 pb-2 font-roboto text-sm" />
+        <ErrorMessage name="aadharNo" component="div" className="text-red-500 px-5 pb-2 font-roboto text-sm" />
         <div className="self-stretch rounded-mini bg-gray-100 flex flex-row items-start justify-start pt-0 px-0 pb-[5px]">
           <div className="flex-1 rounded-mini bg-gray-100 flex flex-row items-start justify-between pt-[15px] pb-[13px] pr-6 pl-[9px] z-[2]">
             <div className="h-14 w-[382px] relative rounded-mini bg-gray-100 hidden" />
@@ -176,13 +170,16 @@ console.log("intial values ",initialValues)
               />
               <Field
                 className="w-full border-none outline-none font-roboto text-base bg-transparent h-19px flex-1 relative text-gray-200 text-left inline-block z-3"
-                name="referral_code"
-                placeholder="Referral code"
-                type="text"
+                name="photo"
+                type="file"
+                onChange={(event) => {
+                  setFieldValue("photo", event.currentTarget.files[0]);
+                }}
               />
             </div>
           </div>
         </div>
+        <ErrorMessage name="photo" component="div" className="text-red-500 px-5 pb-2 font-roboto text-sm" />
         <div className="w-full flex flex-col items-center justify-start gap-[21px]">
           <div className="w-full flex flex-row items-start justify-start ">
             <button
