@@ -87,7 +87,7 @@ console.log("all blogs",blogs)
         </div>
         <div className="self-stretch flex flex-row items-start justify-start py-0 px-6 text-lg">
           <h3 className="m-0 relative text-inherit font-bold font-inherit">
-            Popular Workouts
+            Assigned Work
           </h3>
         </div>
         {/* Pass filteredBlogs to the PopularWorkoutsFrame component */}

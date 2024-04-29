@@ -21,7 +21,7 @@ const DateFrame = () => {
         <div className="flex-1 flex flex-row flex-wrap items-start justify-start gap-[12px] max-w-full">
           <div className="flex-1 flex flex-col items-start justify-start pt-[3px] px-0 pb-0 box-border min-w-[167px]">
             <h3 className="m-0 self-stretch relative text-inherit font-extrabold font-inherit">
-              Popular Exercises
+              This Week's Quota
             </h3>
           </div>
         </div>

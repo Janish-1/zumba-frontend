@@ -30,20 +30,20 @@ const ContainerFrame = () => {
                  HI, {user?.username}
                 </div>
                 <div className="h-[29px] text-mini relative  font-extrabold text-firebrick inline-block">
-                  GET IN SHAPE
+                  STUDY HARD
                 </div>
               </div>
             </div>
           </div>
           <div className="flex flex-row items-center justify-start gap-[13px]">
-          <Link to='/luckydraw'>
+          {/* <Link to='/luckydraw'>
           <img
               className="h-[35px] w-[35px] relative object-cover"
               loading="eager"
               alt=""
               src="/fortunewheel-1@2x.png"
             />
-          </Link>
+          </Link> */}
           {/* <Link to='/live-session'>
           <img
               className="h-[30px] w-[30px] relative object-contain"
